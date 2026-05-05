@@ -40,11 +40,7 @@
       z-index: 20;
       width: 100%;
       display: flex;
-      justify-content: flex-start;
-      align-items: center;
       padding: 20px 24px;
-      font-size: 12px;
-      letter-spacing: 0.14em;
     }
 
     .menu-button {
@@ -122,7 +118,7 @@
       left: 0;
       width: 100%;
       height: 100vh;
-      padding: 90px 24px 32px;
+      padding: 90px 24px 80px;
       opacity: 0;
       visibility: hidden;
       transform: translateY(10px);
@@ -131,6 +127,8 @@
         transform 0.75s ease,
         visibility 0s linear 0.75s;
       pointer-events: none;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .page.is-active {
@@ -151,6 +149,7 @@
       width: 100%;
       height: 100vh;
       padding: 0;
+      overflow: hidden;
     }
 
     .home-title {
@@ -165,7 +164,7 @@
       font-size: 18px;
       font-weight: normal;
       letter-spacing: 0.16em;
-      margin: 0 0 48px;
+      margin: 0 0 28px;
     }
 
     .page-content {
@@ -174,24 +173,196 @@
       line-height: 1.9;
     }
 
+    .look-nav,
+    .purchase-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      margin-bottom: 48px;
+    }
+
+    .look-nav button,
+    .purchase-nav button {
+      font-size: 12px;
+      font-weight: normal;
+      letter-spacing: 0.14em;
+      opacity: 0.45;
+      transition:
+        opacity 0.35s ease,
+        font-weight 0.35s ease;
+    }
+
+    .look-nav button.is-active,
+    .purchase-nav button.is-active {
+      font-weight: 700;
+      opacity: 1;
+    }
+
+    .look-year,
+    .purchase-category,
+    .product-detail {
+      display: none;
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    .look-year.is-active,
+    .purchase-category.is-active,
+    .product-detail.is-active {
+      display: block;
+      animation: fadeIn 0.65s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .look-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      max-width: 960px;
+      max-width: 1200px;
+      padding-bottom: 80px;
     }
 
     .look-placeholder {
-      height: 360px;
+      width: 100%;
+      aspect-ratio: 3 / 4;
       border: 1px solid #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+    }
+
+    .look-placeholder img,
+    .product-image-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 1200px;
+      padding-bottom: 80px;
+    }
+
+    .product-card {
+      min-height: 150px;
+      border: 1px solid #000000;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-align: left;
+      transition: opacity 0.35s ease;
+    }
+
+    .product-card:hover { opacity: 0.55; }
+
+    .product-name {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      line-height: 1.7;
+    }
+
+    .product-price {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      margin-top: 28px;
+    }
+
+    .back-button {
+      display: inline-block;
+      margin-bottom: 36px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      opacity: 0.6;
+    }
+
+    .back-button:hover { opacity: 1; }
+
+    .product-detail-header {
+      margin-bottom: 42px;
+    }
+
+    .product-detail-title {
+      font-size: 18px;
+      font-weight: normal;
+      letter-spacing: 0.14em;
+      margin: 0 0 14px;
+    }
+
+    .product-detail-price {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      margin: 0;
+    }
+
+    .product-detail-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      max-width: 1200px;
+      padding-bottom: 100px;
+    }
+
+    .product-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .product-image-placeholder {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      border: 1px solid #000000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+    }
+
+    .product-info {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      line-height: 1.9;
+    }
+
+    .info-block {
+      margin-bottom: 30px;
+    }
+
+    .info-heading {
+      margin: 0 0 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
     }
 
     @media (max-width: 768px) {
       .site-header { padding: 18px 18px; }
       .menu-panel { padding: 18px; }
       .menu-links button { font-size: 20px; }
-      .look-grid { grid-template-columns: 1fr; }
-      .look-placeholder { height: 280px; }
+      .page { padding: 84px 18px 72px; }
+      .look-nav,
+      .purchase-nav { gap: 18px; margin-bottom: 40px; }
+      .look-grid,
+      .product-grid { grid-template-columns: 1fr; gap: 18px; }
+      .product-detail-layout { grid-template-columns: 1fr; gap: 34px; }
+      .product-images { grid-template-columns: 1fr; gap: 18px; }
     }
   </style>
 </head>
@@ -228,10 +399,36 @@
 
     <section id="look" class="page">
       <h2 class="page-title">Look</h2>
-      <div class="look-grid">
-        <div class="look-placeholder"></div>
-        <div class="look-placeholder"></div>
-        <div class="look-placeholder"></div>
+
+      <div class="look-nav">
+        <button id="lookBtn2026" class="is-active" onclick="showLookYear('2026')">2026</button>
+        <button id="lookBtn2027" onclick="showLookYear('2027')">2027</button>
+        <button id="lookBtn2028" onclick="showLookYear('2028')">2028</button>
+      </div>
+
+      <div id="look2026" class="look-year is-active">
+        <div class="look-grid">
+          <div class="look-placeholder">2026 - 01</div>
+          <div class="look-placeholder">2026 - 02</div>
+          <div class="look-placeholder">2026 - 03</div>
+          <div class="look-placeholder">2026 - 04</div>
+          <div class="look-placeholder">2026 - 05</div>
+          <div class="look-placeholder">2026 - 06</div>
+          <div class="look-placeholder">2026 - 07</div>
+          <div class="look-placeholder">2026 - 08</div>
+          <div class="look-placeholder">2026 - 09</div>
+          <div class="look-placeholder">2026 - 10</div>
+          <div class="look-placeholder">2026 - 11</div>
+          <div class="look-placeholder">2026 - 12</div>
+        </div>
+      </div>
+
+      <div id="look2027" class="look-year">
+        <div class="page-content">2027 / Coming Soon</div>
+      </div>
+
+      <div id="look2028" class="look-year">
+        <div class="page-content">2028 / Coming Soon</div>
       </div>
     </section>
 
@@ -242,15 +439,140 @@
 
     <section id="purchase" class="page">
       <h2 class="page-title">Purchase</h2>
-      <div class="page-content">
-        For purchase, please contact via email.<br>
-        cotact.heime@gmail.com<br>
-        Payment method: Bank transfer only.<br><br>
 
-        購入をご希望の方はメールにてお問い合わせください。<br>
-        cotact.heime@gmail.com<br>
-        お支払い方法は銀行振込のみとなります。<br>
-        入金確認後の製作となります。
+      <div id="purchaseListView">
+        <div class="purchase-nav">
+          <button id="purchaseBtnAll" class="is-active" onclick="showPurchaseCategory('All')">ALL</button>
+          <button id="purchaseBtnShirt" onclick="showPurchaseCategory('Shirt')">SHIRT</button>
+          <button id="purchaseBtnTrousers" onclick="showPurchaseCategory('Trousers')">TROUSERS</button>
+          <button id="purchaseBtnOuterwear" onclick="showPurchaseCategory('Outerwear')">OUTERWEAR</button>
+          <button id="purchaseBtnKnitwear" onclick="showPurchaseCategory('Knitwear')">KNITWEAR</button>
+          <button id="purchaseBtnAccessories" onclick="showPurchaseCategory('Accessories')">ACCESSORIES</button>
+        </div>
+
+        <div id="purchaseAll" class="purchase-category is-active">
+          <div class="product-grid">
+            <button class="product-card" onclick="showProductDetail('coreWhite')">
+              <span class="product-name">Core Shirt (White)</span>
+              <span class="product-price">¥42,000 tax included</span>
+            </button>
+            <button class="product-card" onclick="showProductDetail('coreGrey')">
+              <span class="product-name">Core Shirt (Grey)</span>
+              <span class="product-price">¥39,000 tax included</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="purchaseShirt" class="purchase-category">
+          <div class="product-grid">
+            <button class="product-card" onclick="showProductDetail('coreWhite')">
+              <span class="product-name">Core Shirt (White)</span>
+              <span class="product-price">¥42,000 tax included</span>
+            </button>
+            <button class="product-card" onclick="showProductDetail('coreGrey')">
+              <span class="product-name">Core Shirt (Grey)</span>
+              <span class="product-price">¥39,000 tax included</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="purchaseTrousers" class="purchase-category">
+          <div class="page-content">Coming Soon</div>
+        </div>
+
+        <div id="purchaseOuterwear" class="purchase-category">
+          <div class="page-content">Coming Soon</div>
+        </div>
+
+        <div id="purchaseKnitwear" class="purchase-category">
+          <div class="page-content">Coming Soon</div>
+        </div>
+
+        <div id="purchaseAccessories" class="purchase-category">
+          <div class="page-content">Coming Soon</div>
+        </div>
+      </div>
+
+      <div id="productDetailView">
+        <div id="coreWhite" class="product-detail">
+          <button class="back-button" onclick="backToPurchaseList()">Back</button>
+
+          <div class="product-detail-header">
+            <h3 class="product-detail-title">Core Shirt (White)</h3>
+            <p class="product-detail-price">¥42,000 tax included</p>
+          </div>
+
+          <div class="product-detail-layout">
+            <div class="product-images">
+              <div class="product-image-placeholder">Image 01</div>
+              <div class="product-image-placeholder">Image 02</div>
+              <div class="product-image-placeholder">Image 03</div>
+              <div class="product-image-placeholder">Image 04</div>
+              <div class="product-image-placeholder">Image 05</div>
+            </div>
+
+            <div class="product-info">
+              <div class="info-block">
+                <p class="info-heading">Material</p>
+                <p>Coming Soon</p>
+              </div>
+
+              <div class="info-block">
+                <p class="info-heading">Purchase</p>
+                <p>
+                  For purchase, please contact via email.<br>
+                  cotact.heime@gmail.com<br>
+                  Payment method: Bank transfer only.<br><br>
+
+                  購入をご希望の方はメールにてお問い合わせください。<br>
+                  cotact.heime@gmail.com<br>
+                  お支払い方法は銀行振込のみとなります。<br>
+                  入金確認後の製作となります。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="coreGrey" class="product-detail">
+          <button class="back-button" onclick="backToPurchaseList()">Back</button>
+
+          <div class="product-detail-header">
+            <h3 class="product-detail-title">Core Shirt (Grey)</h3>
+            <p class="product-detail-price">¥39,000 tax included</p>
+          </div>
+
+          <div class="product-detail-layout">
+            <div class="product-images">
+              <div class="product-image-placeholder">Image 01</div>
+              <div class="product-image-placeholder">Image 02</div>
+              <div class="product-image-placeholder">Image 03</div>
+              <div class="product-image-placeholder">Image 04</div>
+              <div class="product-image-placeholder">Image 05</div>
+            </div>
+
+            <div class="product-info">
+              <div class="info-block">
+                <p class="info-heading">Material</p>
+                <p>Coming Soon</p>
+              </div>
+
+              <div class="info-block">
+                <p class="info-heading">Purchase</p>
+                <p>
+                  For purchase, please contact via email.<br>
+                  cotact.heime@gmail.com<br>
+                  Payment method: Bank transfer only.<br><br>
+
+                  購入をご希望の方はメールにてお問い合わせください。<br>
+                  cotact.heime@gmail.com<br>
+                  お支払い方法は銀行振込のみとなります。<br>
+                  入金確認後の製作となります。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -288,6 +610,49 @@
 
       document.getElementById(pageId).classList.add('is-active');
       closeMenu();
+    }
+
+    function showLookYear(year) {
+      const lookYears = document.querySelectorAll('.look-year');
+      const lookButtons = document.querySelectorAll('.look-nav button');
+
+      lookYears.forEach(section => section.classList.remove('is-active'));
+      lookButtons.forEach(button => button.classList.remove('is-active'));
+
+      document.getElementById('look' + year).classList.add('is-active');
+      document.getElementById('lookBtn' + year).classList.add('is-active');
+    }
+
+    function showPurchaseCategory(category) {
+      const categories = document.querySelectorAll('.purchase-category');
+      const buttons = document.querySelectorAll('.purchase-nav button');
+      const listView = document.getElementById('purchaseListView');
+      const details = document.querySelectorAll('.product-detail');
+
+      listView.style.display = 'block';
+      details.forEach(detail => detail.classList.remove('is-active'));
+      categories.forEach(section => section.classList.remove('is-active'));
+      buttons.forEach(button => button.classList.remove('is-active'));
+
+      document.getElementById('purchase' + category).classList.add('is-active');
+      document.getElementById('purchaseBtn' + category).classList.add('is-active');
+    }
+
+    function showProductDetail(productId) {
+      const listView = document.getElementById('purchaseListView');
+      const details = document.querySelectorAll('.product-detail');
+
+      listView.style.display = 'none';
+      details.forEach(detail => detail.classList.remove('is-active'));
+      document.getElementById(productId).classList.add('is-active');
+    }
+
+    function backToPurchaseList() {
+      const listView = document.getElementById('purchaseListView');
+      const details = document.querySelectorAll('.product-detail');
+
+      details.forEach(detail => detail.classList.remove('is-active'));
+      listView.style.display = 'block';
     }
   </script>
 </body>
