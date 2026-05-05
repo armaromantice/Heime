@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heime</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: "Courier New", Courier, monospace;
+      background: #ffffff;
+      color: #000000;
+    }
+
+    body { overflow: hidden; }
+
+    a, button {
+      font-family: "Courier New", Courier, monospace;
+      color: inherit;
+    }
+
+    button {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+    }
+
+    /* HEADER: menu button on LEFT only */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 20;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 20px 24px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+    }
+
+    .menu-button {
+      width: 26px;
+      height: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .menu-button span {
+      display: block;
+      width: 100%;
+      height: 1px;
+      background: #000000;
+    }
+
+    /* MENU PANEL */
+    .menu-panel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 30;
+      width: 100%;
+      height: 100vh;
+      background: #ffffff;
+      display: block;
+      padding: 20px 24px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition:
+        opacity 0.45s ease,
+        transform 0.45s ease,
+        visibility 0s linear 0.45s;
+      pointer-events: none;
+    }
+
+    .menu-panel.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      transition:
+        opacity 0.45s ease,
+        transform 0.45s ease,
+        visibility 0s linear 0s;
+      pointer-events: auto;
+    }
+
+    .menu-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+    }
+
+    .menu-links {
+      height: calc(100vh - 80px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 22px;
+    }
+
+    .menu-links button {
+      width: fit-content;
+      font-size: 22px;
+      letter-spacing: 0.16em;
+      text-align: left;
+    }
+
+    /* PAGES */
+    .page {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      padding: 90px 24px 32px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition:
+        opacity 0.75s ease,
+        transform 0.75s ease,
+        visibility 0s linear 0.75s;
+      pointer-events: none;
+    }
+
+    .page.is-active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      transition:
+        opacity 0.75s ease,
+        transform 0.75s ease,
+        visibility 0s linear 0s;
+      pointer-events: auto;
+    }
+
+    .home-page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100vh;
+      padding: 0;
+    }
+
+    .home-page.is-active { display: flex; }
+
+    .home-title {
+      font-size: clamp(24px, 5vw, 56px);
+      font-family: "Courier New", Courier, monospace;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-align: center;
+      margin: 0;
+    }
+
+    .page-title {
+      font-size: 18px;
+      font-weight: normal;
+      letter-spacing: 0.16em;
+      margin: 0 0 48px;
+    }
+
+    .page-content {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      line-height: 1.9;
+    }
+
+    .look-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 960px;
+    }
+
+    .look-placeholder {
+      height: 360px;
+      border: 1px solid #000000;
+    }
+
+    @media (max-width: 768px) {
+      .site-header { padding: 18px 18px; }
+      .menu-panel { padding: 18px; }
+      .menu-links button { font-size: 20px; }
+      .look-grid { grid-template-columns: 1fr; }
+      .look-placeholder { height: 280px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <button class="menu-button" onclick="openMenu()" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="menu-panel" id="menuPanel">
+    <div class="menu-top">
+      <div>Menu</div>
+      <button onclick="closeMenu()">Close</button>
+    </div>
+
+    <nav class="menu-links">
+      <button onclick="showPage('home')">Home</button>
+      <button onclick="showPage('look')">Look</button>
+      <button onclick="showPage('stockist')">Stockist</button>
+      <button onclick="showPage('purchase')">Purchase</button>
+      <button onclick="showPage('about')">About</button>
+      <button onclick="showPage('blog')">Blog</button>
+    </nav>
+  </div>
+
+  <main>
+    <section id="home" class="page home-page is-active">
+      <h1 class="home-title">Heime</h1>
+    </section>
+
+    <section id="look" class="page">
+      <h2 class="page-title">Look</h2>
+      <div class="look-grid">
+        <div class="look-placeholder"></div>
+        <div class="look-placeholder"></div>
+        <div class="look-placeholder"></div>
+      </div>
+    </section>
+
+    <section id="stockist" class="page">
+      <h2 class="page-title">Stockist</h2>
+      <div class="page-content">Coming Soon</div>
+    </section>
+
+    <section id="purchase" class="page">
+      <h2 class="page-title">Purchase</h2>
+      <div class="page-content">Online Shop Coming Soon</div>
+    </section>
+
+    <section id="about" class="page">
+      <h2 class="page-title">About</h2>
+      <div class="page-content">Heime</div>
+    </section>
+
+    <section id="blog" class="page">
+      <h2 class="page-title">Blog</h2>
+      <div class="page-content">Coming Soon</div>
+    </section>
+  </main>
+
+  <script>
+    function openMenu() {
+      document.getElementById('menuPanel').classList.add('is-open');
+    }
+
+    function closeMenu() {
+      document.getElementById('menuPanel').classList.remove('is-open');
+    }
+
+    function showPage(pageId) {
+      const pages = document.querySelectorAll('.page');
+      pages.forEach(page => page.classList.remove('is-active'));
+
+      document.getElementById(pageId).classList.add('is-active');
+      closeMenu();
+    }
+  </script>
+</body>
+</html>
