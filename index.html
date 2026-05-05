@@ -33,7 +33,6 @@
       letter-spacing: 0.12em;
     }
 
-    /* HEADER: menu button on LEFT only */
     .site-header {
       position: fixed;
       top: 0;
@@ -63,7 +62,6 @@
       background: #000000;
     }
 
-    /* MENU PANEL */
     .menu-panel {
       position: fixed;
       top: 0;
@@ -118,7 +116,6 @@
       text-align: left;
     }
 
-    /* PAGES */
     .page {
       position: absolute;
       top: 0;
@@ -156,11 +153,8 @@
       padding: 0;
     }
 
-    .home-page.is-active { display: flex; }
-
     .home-title {
       font-size: clamp(24px, 5vw, 56px);
-      font-family: "Courier New", Courier, monospace;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-align: center;
@@ -223,6 +217,7 @@
       <button onclick="showPage('purchase')">Purchase</button>
       <button onclick="showPage('about')">About</button>
       <button onclick="showPage('blog')">Blog</button>
+      <button onclick="showPage('contact')">Contact</button>
     </nav>
   </div>
 
@@ -247,7 +242,16 @@
 
     <section id="purchase" class="page">
       <h2 class="page-title">Purchase</h2>
-      <div class="page-content">Online Shop Coming Soon</div>
+      <div class="page-content">
+        For purchase, please contact via email.<br>
+        cotact.heime@gmail.com<br>
+        Payment method: Bank transfer only.<br><br>
+
+        購入をご希望の方はメールにてお問い合わせください。<br>
+        cotact.heime@gmail.com<br>
+        お支払い方法は銀行振込のみとなります。<br>
+        入金確認後の製作となります。
+      </div>
     </section>
 
     <section id="about" class="page">
@@ -258,6 +262,14 @@
     <section id="blog" class="page">
       <h2 class="page-title">Blog</h2>
       <div class="page-content">Coming Soon</div>
+    </section>
+
+    <section id="contact" class="page">
+      <h2 class="page-title">Contact</h2>
+      <div class="page-content">
+        cotact.heime@gmail.com<br><br>
+        お問い合わせはこちらのメールアドレスまでお願いいたします。
+      </div>
     </section>
   </main>
 
