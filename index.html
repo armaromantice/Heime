@@ -288,20 +288,25 @@
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 34px;
-      height: 34px;
-      border: 1px solid #000000;
-      background: rgba(255, 255, 255, 0.78);
-      font-size: 18px;
+      width: 36px;
+      height: 52px;
+      border: 0;
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      font-size: 24px;
       line-height: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 2;
+      opacity: 0.45;
+      transition: opacity 0.25s ease, background 0.25s ease;
     }
 
     .product-slide-button:hover {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.42);
+      opacity: 0.9;
     }
 
     .product-slide-button.prev {
