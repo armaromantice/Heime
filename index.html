@@ -281,6 +281,35 @@
     .product-main-image {
       width: 100%;
       margin-bottom: 12px;
+      position: relative;
+    }
+
+    .product-slide-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 34px;
+      height: 34px;
+      border: 1px solid #000000;
+      background: rgba(255, 255, 255, 0.78);
+      font-size: 18px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .product-slide-button:hover {
+      background: #ffffff;
+    }
+
+    .product-slide-button.prev {
+      left: 10px;
+    }
+
+    .product-slide-button.next {
+      right: 10px;
     }
 
     .product-main-image img {
@@ -427,7 +456,12 @@
 
     .order-link {
       display: inline-block;
-      margin: 8px 0 12px;
+      margin: 10px 0 16px;
+      padding: 12px 18px;
+      border: 1px solid #111;
+      text-decoration: none;
+      line-height: 1.6;
+      letter-spacing: 0.08em;
     }
 
     @media (max-width: 768px) {
@@ -590,6 +624,8 @@
             <div class="product-gallery">
               <div class="product-main-image">
                 <img id="coreWhiteMainImage" src="images/products/core-shirt-white/cs001.JPG" alt="Core Shirt (White) 01">
+                <button class="product-slide-button prev" onclick="slideProductImage('coreWhiteMainImage', -1)" aria-label="Previous image">‹</button>
+                <button class="product-slide-button next" onclick="slideProductImage('coreWhiteMainImage', 1)" aria-label="Next image">›</button>
               </div>
               <div class="product-thumbnails">
                 <button class="product-thumbnail is-active" onclick="changeProductImage('coreWhiteMainImage', this, 'images/products/core-shirt-white/cs001.JPG')">
@@ -674,16 +710,17 @@ Hem            64         64</pre>
                   <button class="accordion-toggle" data-label="Order" onclick="toggleAccordion(this)">+ Order</button>
                   <div class="accordion-content">
                     <p>
-                      For purchase, please contact via email.<br>
-                      <a class="order-link" href="mailto:desk.heime@gmail.com?subject=%E3%80%90Heime%E3%80%91Order%20Request&body=%E3%81%94%E8%B3%BC%E5%85%A5%E5%B8%8C%E6%9C%9B%E3%81%82%E3%82%8A%E3%81%8C%E3%81%A8%E3%81%86%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%0D%0A%E3%81%8A%E6%89%8B%E6%95%B0%E3%81%A7%E3%81%99%E3%81%8C%E3%80%81%E4%B8%8B%E8%A8%98%E3%82%92%E3%81%94%E8%A8%98%E5%85%A5%E3%81%AE%E3%81%86%E3%81%88%E9%80%81%E4%BF%A1%E3%82%92%E3%81%8A%E9%A1%98%E3%81%84%E3%81%84%E3%81%9F%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%0D%0A%0D%0A%E3%80%90%E3%81%8A%E5%AE%A2%E6%A7%98%E6%83%85%E5%A0%B1%E3%80%91%0D%0A%0D%0A%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0D%0A%0D%0A%E3%81%94%E4%BD%8F%E6%89%80%EF%BC%9A%0D%0A%0D%0A%E9%9B%BB%E8%A9%B1%E7%95%AA%E5%8F%B7%EF%BC%9A%0D%0A%0D%0A%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%EF%BC%9A%0D%0A%0D%0A------------------------------%0D%0A%0D%0A%E3%80%90%E3%81%94%E6%B3%A8%E6%96%87%E5%86%85%E5%AE%B9%E3%80%91%0D%0A%0D%0A%E5%95%86%E5%93%81%E5%90%8D%EF%BC%9ACore%20Shirt%20%28White%29%0D%0A%0D%0A%E3%82%AB%E3%83%A9%E3%83%BC%EF%BC%9AWhite%0D%0A%0D%0A%E3%82%B5%E3%82%A4%E3%82%BA%EF%BC%9A%0D%0A%0D%0A%E6%95%B0%E9%87%8F%EF%BC%9A1%0D%0A%0D%0A------------------------------%0D%0A%0D%0A%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%94%E8%A6%81%E6%9C%9B%E3%83%BB%E3%81%94%E8%B3%AA%E5%95%8F%EF%BC%9A">Purchase Request</a><br>
+                      For purchase, please contact us using the button below.<br>
+                      <a class="order-link" href="mailto:desk.heime@gmail.com?subject=%E3%80%90Heime%E3%80%91Order%20Request&body=%E3%81%94%E8%B3%BC%E5%85%A5%E5%B8%8C%E6%9C%9B%E3%81%82%E3%82%8A%E3%81%8C%E3%81%A8%E3%81%86%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%0A%E3%83%A1%E3%83%BC%E3%83%AB%E3%81%AB%E3%81%AF%E4%BB%A5%E4%B8%8B%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E3%81%94%E8%A8%98%E8%BC%89%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%0A%0A%E6%B0%8F%E5%90%8D%EF%BC%9A%0A%E4%BD%8F%E6%89%80%EF%BC%9A%0A%E9%9B%BB%E8%A9%B1%E7%95%AA%E5%8F%B7%EF%BC%9A%0A%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%EF%BC%9A%0A%E5%B8%8C%E6%9C%9B%E5%95%86%E5%93%81%E5%90%8D%EF%BC%9ACore%20Shirt%20%28White%29%0A%E3%82%B5%E3%82%A4%E3%82%BA%E3%80%81%E3%82%AB%E3%83%A9%E3%83%BC%EF%BC%9A%0A%0A%E3%81%94%E6%B3%A8%E6%96%87%E5%86%85%E5%AE%B9%E7%A2%BA%E8%AA%8D%E5%BE%8C%E3%80%81%E6%8C%AF%E8%BE%BC%E5%85%88%E3%82%92%E3%81%94%E6%A1%88%E5%86%85%E3%81%84%E3%81%9F%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%0A%E3%81%8A%E6%94%AF%E6%89%95%E3%81%84%E6%96%B9%E6%B3%95%E3%81%AF%E9%8A%80%E8%A1%8C%E6%8C%AF%E8%BE%BC%E3%81%AE%E3%81%BF%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82%0A%0A---%0A%0AThank%20you%20for%20your%20purchase%20request.%0APlease%20include%20the%20following%20information%20in%20your%20email.%0A%0AFull%20name%3A%0AShipping%20address%3A%0APhone%20number%3A%0AEmail%20address%3A%0ADesired%20item%20name%3A%20Core%20Shirt%20%28White%29%0ASize%20/%20Color%3A%0A%0AWe%20will%20reply%20with%20bank%20transfer%20details%20after%20confirming%20your%20order.%0APayment%20method%3A%20Bank%20transfer%20only.">Purchase here</a><br>
                       desk.heime@gmail.com<br><br>
 
                       Please include the following information in your email:<br>
                       Full name / Shipping address / Phone number / Email address / Desired item name / Size and color.<br>
-                      We will reply with payment details after confirming your order.<br>
+                      We will reply with bank transfer details after confirming your order.<br>
                       Payment method: Bank transfer only.<br><br>
 
-                      購入をご希望の方は下記メールアドレスまでご連絡ください。<br>
+                      購入をご希望の方は下記ボタンよりご連絡ください。<br>
+                      <a class="order-link" href="mailto:desk.heime@gmail.com?subject=%E3%80%90Heime%E3%80%91Order%20Request&body=%E3%81%94%E8%B3%BC%E5%85%A5%E5%B8%8C%E6%9C%9B%E3%81%82%E3%82%8A%E3%81%8C%E3%81%A8%E3%81%86%E3%81%94%E3%81%96%E3%81%84%E3%81%BE%E3%81%99%E3%80%82%0A%E3%83%A1%E3%83%BC%E3%83%AB%E3%81%AB%E3%81%AF%E4%BB%A5%E4%B8%8B%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E3%81%94%E8%A8%98%E8%BC%89%E3%81%8F%E3%81%A0%E3%81%95%E3%81%84%E3%80%82%0A%0A%E6%B0%8F%E5%90%8D%EF%BC%9A%0A%E4%BD%8F%E6%89%80%EF%BC%9A%0A%E9%9B%BB%E8%A9%B1%E7%95%AA%E5%8F%B7%EF%BC%9A%0A%E3%83%A1%E3%83%BC%E3%83%AB%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%EF%BC%9A%0A%E5%B8%8C%E6%9C%9B%E5%95%86%E5%93%81%E5%90%8D%EF%BC%9ACore%20Shirt%20%28White%29%0A%E3%82%B5%E3%82%A4%E3%82%BA%E3%80%81%E3%82%AB%E3%83%A9%E3%83%BC%EF%BC%9A%0A%0A%E3%81%94%E6%B3%A8%E6%96%87%E5%86%85%E5%AE%B9%E7%A2%BA%E8%AA%8D%E5%BE%8C%E3%80%81%E6%8C%AF%E8%BE%BC%E5%85%88%E3%82%92%E3%81%94%E6%A1%88%E5%86%85%E3%81%84%E3%81%9F%E3%81%97%E3%81%BE%E3%81%99%E3%80%82%0A%E3%81%8A%E6%94%AF%E6%89%95%E3%81%84%E6%96%B9%E6%B3%95%E3%81%AF%E9%8A%80%E8%A1%8C%E6%8C%AF%E8%BE%BC%E3%81%AE%E3%81%BF%E3%81%A8%E3%81%AA%E3%82%8A%E3%81%BE%E3%81%99%E3%80%82%0A%0A---%0A%0AThank%20you%20for%20your%20purchase%20request.%0APlease%20include%20the%20following%20information%20in%20your%20email.%0A%0AFull%20name%3A%0AShipping%20address%3A%0APhone%20number%3A%0AEmail%20address%3A%0ADesired%20item%20name%3A%20Core%20Shirt%20%28White%29%0ASize%20/%20Color%3A%0A%0AWe%20will%20reply%20with%20bank%20transfer%20details%20after%20confirming%20your%20order.%0APayment%20method%3A%20Bank%20transfer%20only.">購入はこちらから</a><br>
                       desk.heime@gmail.com<br><br>
 
                       メールには以下の情報をご記載ください。<br>
@@ -792,14 +829,74 @@ Hem            64         64</pre>
   <script>
 
 
-    function changeProductImage(imageId, button, src) {
-      const mainImage = document.getElementById(imageId);
-      const thumbnails = button.parentElement.querySelectorAll('.product-thumbnail');
+    const productImageSets = {
+      coreWhiteMainImage: [
+        'images/products/core-shirt-white/cs001.JPG',
+        'images/products/core-shirt-white/cs002.JPG',
+        'images/products/core-shirt-white/cs003.JPG',
+        'images/products/core-shirt-white/cs004.JPG'
+      ]
+    };
 
-      mainImage.src = src;
-      thumbnails.forEach(thumbnail => thumbnail.classList.remove('is-active'));
-      button.classList.add('is-active');
+    const productImageIndexes = {
+      coreWhiteMainImage: 0
+    };
+
+    function updateProductImage(imageId, index) {
+      const images = productImageSets[imageId];
+      const mainImage = document.getElementById(imageId);
+      const gallery = mainImage.closest('.product-gallery');
+      const thumbnails = gallery.querySelectorAll('.product-thumbnail');
+
+      if (!images || !mainImage) return;
+
+      const nextIndex = (index + images.length) % images.length;
+      productImageIndexes[imageId] = nextIndex;
+      mainImage.src = images[nextIndex];
+      mainImage.alt = 'Core Shirt (White) 0' + (nextIndex + 1);
+
+      thumbnails.forEach((thumbnail, thumbnailIndex) => {
+        thumbnail.classList.toggle('is-active', thumbnailIndex === nextIndex);
+      });
     }
+
+    function changeProductImage(imageId, button, src) {
+      const images = productImageSets[imageId];
+      const index = images.indexOf(src);
+
+      if (index === -1) return;
+
+      updateProductImage(imageId, index);
+    }
+
+    function slideProductImage(imageId, direction) {
+      const currentIndex = productImageIndexes[imageId] || 0;
+      updateProductImage(imageId, currentIndex + direction);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const mainImage = document.getElementById('coreWhiteMainImage');
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      if (!mainImage) return;
+
+      mainImage.addEventListener('touchstart', function (event) {
+        touchStartX = event.changedTouches[0].screenX;
+      });
+
+      mainImage.addEventListener('touchend', function (event) {
+        touchEndX = event.changedTouches[0].screenX;
+
+        if (touchStartX - touchEndX > 40) {
+          slideProductImage('coreWhiteMainImage', 1);
+        }
+
+        if (touchEndX - touchStartX > 40) {
+          slideProductImage('coreWhiteMainImage', -1);
+        }
+      });
+    });
 
     function toggleAccordion(button) {
       const currentContent = button.nextElementSibling;
