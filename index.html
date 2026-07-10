@@ -955,6 +955,10 @@ Hem            64         64</pre>
       const pages = document.querySelectorAll('.page');
       pages.forEach(page => page.classList.remove('is-active'));
 
+      if (pageId === 'purchase') {
+        resetPurchaseView();
+      }
+
       document.getElementById(pageId).classList.add('is-active');
       closeMenu();
     }
@@ -993,6 +997,15 @@ Hem            64         64</pre>
     function backToPurchaseList() {
       document.querySelectorAll('.product-detail').forEach(detail => detail.classList.remove('is-active'));
       document.getElementById('purchaseListView').style.display = 'block';
+    }
+
+    function resetPurchaseView() {
+      document.getElementById('purchaseListView').style.display = 'block';
+      document.querySelectorAll('.product-detail').forEach(detail => detail.classList.remove('is-active'));
+      document.querySelectorAll('.purchase-category').forEach(section => section.classList.remove('is-active'));
+      document.querySelectorAll('.purchase-nav button').forEach(button => button.classList.remove('is-active'));
+      document.getElementById('purchaseAll').classList.add('is-active');
+      document.getElementById('purchaseBtnAll').classList.add('is-active');
     }
   </script>
 </body>
